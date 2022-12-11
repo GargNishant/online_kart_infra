@@ -42,16 +42,18 @@ It is also possible to delete/add an Airport/FC. This will trigger the script to
 6. Table for Item Categories (Eventual Consistency with Inventory Db)
 
 **NoSQL DB:**
-1. Collection containing Upcoming Shipments for each FCs with Seller Info. This will also act as log for history
-2. A collection containing log of Orders and the Path it is supposed to take and current timings
-3. A collection which stores Routes for each FC. Something like a Route Table. Each FC can only store the Routes for FC which
+1. Collection containing Upcoming Shipments for each FCs with Seller Info.
+2. A log collection for Upcoming Shipments
+3. Collection of current package paths and the path it is supposed to take and current timings
+4. Collection containing log of Orders and the Path it is supposed to take and current timings
+5. A collection which stores Routes for each FC. Something like a Route Table. Each FC can only store the Routes for FC which
    can be reached from that FC in Global Max Hop Limit. It will also contain Route to the nearest Airport or Ship Port
    Single Route will contain _**"Range of PinCode(Sync with SQL), FC ID, Next Hop"**_ as Entry. Making connecting Path Possible
-4. A collection which stores Routes for each Airport/Ship Port. Each Airport will have Routes for all FC which are nearest to it.
+6. A collection which stores Routes for each Airport/Ship Port. Each Airport will have Routes for all FC which are nearest to it.
    An FC is always assigned to Airport it is nearest to it. A single Route will contain 
    _**"Range of Pincode(Sync with SQL), AirportID, Next Hop"**_ as entry. This makes a future possibility of Connecting Flights.
-5. Log of price changes for each item with timestamps
-6. Collection of Sellers with Item Sold history. This will contain fc_id, count, etc
+7. Log of price changes for each item with timestamps
+8. Collection of Sellers with Item Sold history. This will contain fc_id, count, etc
 ___
 ### Easy FulFillment
 1. PostgreSQL Database for Inventory Database
