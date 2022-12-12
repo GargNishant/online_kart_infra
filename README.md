@@ -17,6 +17,7 @@ Airport/Ship Port is included. This allows 2 remote locations to be connected to
 It is also possible to delete/add an Airport/FC. This will trigger the script to update the Routes
 
 **Inventory Database:**
+![Inventory Schema](inventory_db/inventory_db.png?raw=true "Inventory DB Schema")
 1. Table of all registered Airports/Shipping Ports
 2. Table of all FulFillment Centers
 3. Table of PinCodes service by a FC
@@ -34,6 +35,7 @@ It is also possible to delete/add an Airport/FC. This will trigger the script to
     for showing only upto 30 left in stock
 
 **Customer Database:**
+![Customer Schema](customer_db/customer_db.png?raw=true "Customer DB Schema")
 1. Table of customer
 2. Table for Session supporting multi session -- NOT NOW
 3. Table for Storing multiple Address for single customer
