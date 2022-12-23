@@ -12,7 +12,7 @@ last_login_time BIGINT NOT NULL
 -- Customer Addresses
 CREATE TABLE IF NOT EXISTS customer_address (
 customer_address_id SERIAL PRIMARY KEY,
-customer_id INTEGER REFERENCES customer (customer_id),
+customer_id INTEGER REFERENCES customer (customer_id) ON DELETE CASCADE,
 pincode INTEGER NOT NULL,
 contact_name VARCHAR(50) NOT NULL UNIQUE,
 contact_number VARCHAR(11) NOT NULL UNIQUE,
@@ -22,8 +22,8 @@ address VARCHAR(150) NOT NULL
 -- ORDER
 CREATE TABLE IF NOT EXISTS orders (
 order_id SERIAL PRIMARY KEY,
-customer_id INTEGER REFERENCES customer (customer_id),
-delivery_address_id INTEGER REFERENCES customer_address (customer_address_id),
+customer_id INTEGER REFERENCES customer (customer_id) ON DELETE CASCADE,
+delivery_address_id INTEGER REFERENCES customer_address (customer_address_id) ON DELETE SET NULL,
 order_date BIGINT NOT NULL,
 price VARCHAR(8) NOT NULL
 );
@@ -31,7 +31,7 @@ price VARCHAR(8) NOT NULL
 -- INDIVIDUAL PACKAGE FROM ORDER
 CREATE TABLE IF NOT EXISTS package (
 package_id SERIAL PRIMARY KEY,
-order_id INTEGER REFERENCES orders (order_id),
+order_id INTEGER REFERENCES orders (order_id) ON DELETE NO ACTION,
 item_id INTEGER NOT NULL,
 item_count INTEGER NOT NULL,
 package_cost VARCHAR(8) NOT NULL

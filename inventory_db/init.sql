@@ -10,7 +10,7 @@ port_code VARCHAR(60) NOT NULL
 CREATE TABLE IF NOT EXISTS district (
 district_id SERIAL PRIMARY KEY,
 district_name VARCHAR(70) NOT NULL,
-nearest_port SMALLINT REFERENCES port(port_id),
+nearest_port SMALLINT REFERENCES port(port_id) NOT NULL,
 district_latitude NUMERIC(8,6) NOT NULL,
 district_longitude NUMERIC(9,6) NOT NULL
 );
@@ -18,14 +18,14 @@ district_longitude NUMERIC(9,6) NOT NULL
 -- Districts Pin Codes
 CREATE TABLE IF NOT EXISTS pincode_district (
 pincode INTEGER PRIMARY KEY NOT NULL,
-district_id INTEGER REFERENCES district (district_id)
+district_id INTEGER REFERENCES district (district_id) NOT NULL
 );
 
 -- Registered FC
 CREATE TABLE IF NOT EXISTS fulfillment_center (
 fc_id SERIAL PRIMARY KEY,
 fc_name VARCHAR(50) NOT NULL UNIQUE,
-district_id INTEGER REFERENCES district (district_id)
+district_id INTEGER REFERENCES district (district_id) NOT NULL
 );
 
 -- Sellers
@@ -35,7 +35,7 @@ seller_name VARCHAR(50) NOT NULL UNIQUE,
 seller_username VARCHAR(100) NOT NULL UNIQUE,
 seller_password VARCHAR(100) NOT NULL,
 seller_salt VARCHAR(50) NOT NULL,
-last_login_time BIGINT NOT NULL
+last_login_time BIGINT
 );
 
 -- Item Categories
